@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-
+  get 'users/:id', to: 'users#show'
   root to: 'homes#top'
   resources :books, only:[:new, :create, :destroy, :index, :show]
   resources :users, only:[:show, :edit]
