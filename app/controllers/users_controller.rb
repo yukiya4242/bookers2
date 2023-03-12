@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   if @books.any?
     @books = @books.page(params[:page])
   end
+
  end
 
   def edit
