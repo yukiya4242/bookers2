@@ -1,14 +1,5 @@
-<html>
-  <head>
-    <title>Bookers2Ver2</title>
-    <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="fKjX72qSECjTZB18DqvHSTMzJ45C8lr66pKdgK4zSccgYGqjeCLxL2_Aw6iOxePo5fT6tU6Jup7Hmqukv8ciHQ" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" media="all" href="/packs/css/application-859f38f5.css" data-turbolinks-track="reload" />
-    <script src="/packs/js/application-8c498bd08fe3c47f4c35.js" data-turbolinks-track="reload"></script>
-  </head>
 <body>
+
 
        <main>
          <p id="notice">Welcome! You have signed up successfully.</p>
@@ -27,6 +18,13 @@
                  <th>introduction</th>
                </tr>
              </table>
+
+
+             <div class='row'>
+              <%= link_to "/users/edit", class: "btn btn-outline-secondary btn-block" do %>
+               <i class="fas fa-user-cog"></i>
+                <% end %>
+
 
         <div class='row'>
          <a class="btn btn-outline-secondary btn-block edit_user_87738" href="/users/87738/edit">
@@ -61,4 +59,3 @@
          </div>
        </main>
     </body>
-   </html>
