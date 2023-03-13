@@ -1,41 +1,5 @@
 <body>
- <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/"><span>Bookers</span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-            <%= link_to "Home", users_path, class: "nav-link text-light" %>
-              <i class="fas fa-home"></i>
-
-
-     </div>
-     <li>
-       <%= link_to "Users", users_path, class: "nav-link text-light" %>
-         <i class="fas fa-users"></i>
-
-     </li>
-
-     <li>
-       <%= link_to "Books", books_path, class: "nav-link text-light" %>
-         <i class="fas fa-book-open"></i>
-
-
-     </li>
-
-      <li>
-        <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
-          <i class="fas fa-sign-out-alt"></i> Log out
-       </li>
-       </ul>
-       </div>
-       </div>
-       </nav>
+ 
 
        <main>
          <p id="notice">Welcome! You have signed up successfully.</p>
@@ -45,7 +9,7 @@
              <h2>User info</h2>
              <table class="table">
 
-               <tr><img src="https://bookers-level2.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMXE4QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--329d40694d81831d4c1ec1a51e6ea5322ada7cf2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4a929dbc7794f3c4610ba9ba5402762ad9cd1a14/default-image.jpg" /></tr>
+               <tr><img src="https://bookers-level2.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMXE4QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--329d40694d81831d4c1ec1a51e6ea5322ada7cf2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4a929dbc7794f3c4610ba9ba5402762ad9cd1a14/default-image.jpg" /></tr>-->
                <tr>
                <th>name</th>
                </tr>
@@ -56,17 +20,18 @@
              </table>
 
         <div class='row'>
-         <a class="btn btn-outline-secondary btn-block edit_user_87738" href="/users/87738/edit">
+
+        <%#= link_to "edit", edit_user_path(current_user.id) %>
            <i class="fas fa-user-cog"></i>
-           </a>
+
            </div>
            <h2 class="mt-3">New Book</h2>
-　　　　　　<%= form_with model: @book, local: true do |form| %>
-             <%= form.label :title %>
-              <%= form.text_field :title, class: "form_control" %>
+              <%= form_with model: @book, local: true do |form| %>
+              <%= form.label :title %>
+              <%= form.text_field :book, class: "form_control" %>
 
-              <%= form.label :body %>
-               <%= form.text_area :body, class: "form_control" %>
+               <%= form.label :body %>
+               <%= form.text_area :book, class: "form_control" %>
 
                <%= form.submit "Create Book", class: "btn btn-success" %>
                <% end %>

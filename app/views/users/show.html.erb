@@ -29,9 +29,9 @@
              </table>
 
         <div class='row'>
-         <a class="btn btn-outline-secondary btn-block edit_user_87738" href="/users/87738/edit">
-           <i class="fas fa-user-cog"></i>
-           </a>
+        <%= link_to edit_user_path, class: "btn btn-outline-secondary btn-block edit_user_87738" do %>
+         <i class="fas fa-user-cog"></i>
+          <% end %>
            </div>
            <h2 class="mt-3">New Book</h2>
 　　　　　　<%= form_with model: @book, local: true do |form| %>

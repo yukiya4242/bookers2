@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <header>
+      <%= render 'list', users: @users %>
+      </header>
+      <body>
+        <main>
+          <h2>Book detail</h2>
+          <ul>
+            <% @books.each do |book| %>
+            <li>
+              <strong><%= book.title %></strong>
+
+            </li>
+            <% end %>
+          </ul>
+
+
+
+
+
+        </main>
+      </body>
+
+  </head>
+</html>
