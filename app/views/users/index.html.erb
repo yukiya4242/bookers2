@@ -18,9 +18,16 @@
    <div class='row'>
    <div class='col-md-3'>
    <h2>User info</h2>
+   <% if @user.image.attached? %>
+   <%= image_tag user.image, size: "150×150" %>
+   <% else %>
+   <%= image_tag 'no_image', size: "150×150" %>
+   <% end %>
+
+
    <table class='table'>
-  <tr><img src="https://bookers-level2.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOUxDQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--7832486ba01b4f1f384d6c9c46a825bb5feb3832/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4a929dbc7794f3c4610ba9ba5402762ad9cd1a14/default-image.jpg" /></tr>
-   <tr>
+
+
 	  <th>name</th>
 	  <th><%= link_to current_user.name, user_path(current_user) %></th>
   </tr>

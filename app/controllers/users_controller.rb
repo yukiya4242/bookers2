@@ -20,6 +20,10 @@ class UsersController < ApplicationController
    @book = current_user
   end
 
+ #ユーザー情報の取得
+ #ユーザーのアップデート
+ #ユーザーの詳細ページへの
+
   def update
    @user = User.find(params[:id])
    if @user.update(user_params)
@@ -28,4 +32,10 @@ class UsersController < ApplicationController
     render 'edit'
    end
   end
+
+  private
+  def user_params
+   params.require(:user).permit(:title, :body, :image)
+  end
+
 end
