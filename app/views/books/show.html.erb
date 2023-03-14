@@ -21,8 +21,9 @@
        <table class='table'>
   <tr><img src="https://bookers-level2.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMnZDQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--31b318e396e47be9db500176f73c45bf19adece7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4a929dbc7794f3c4610ba9ba5402762ad9cd1a14/default-image.jpg" /></tr>
   <tr>
-	  <th>name</th>
-  </tr>
+    <th>name</th>
+	  <th><%= link_to current_user.name, user_path(current_user) %></th>
+
   <tr>
 	  <th>introduction</th>
 	  <th></th>
@@ -50,11 +51,13 @@
   </div>
   <% end %>
 
-  <%= form_with model: @book, local: true do |f| %>
+  <%= form_with(model: @book, local: true) do |f| %>
   <div class="form-group">
     <%= f.submit "Create Book", class: "btn btn-success", "data-disable-with" => "Create Book" %>
     </div>
     <% end %>
+    </div>
+    </form>
 
 
     <div class='col-md-8 offset-md-1'>
@@ -73,6 +76,7 @@
 
 
             <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+
             <td><%= link_to "Destroy", book_path(@book), class: "btn btn-sm btn-danger" %></td></td>
         </tr>
       </table>
