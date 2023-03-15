@@ -12,6 +12,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @books = Book.all.order(created: :desc)
+    @user = @book.user
 
   end
 
@@ -24,6 +25,9 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
 
 
 
@@ -33,6 +37,8 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     if @book.save
       redirect_to book_path(@book)
+    else
+      redirect_to books_path
     end
   end
 
@@ -46,7 +52,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-   params.require(:book).permit(:title, :opinion, :image)
+   params.require(:book).permit(:title, :opinion, :profile_image)
   end
 end
 

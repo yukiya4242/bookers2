@@ -18,15 +18,11 @@
   <div class='row'>
     <div class='col-md-3'>
       <h2>User info</h2>
-       <% if @book.image.attached? %>
-       <%= image_tag book.image, size: "150x150" %>
-       <% else %>
-       <%= image_tag 'no_image', size: "150x150" %>
-       <% end %>
+       <%= image_tag @user.get_profile_image %>
        <table class='table'>
 
     <th>name</th>
-	  <th><%= link_to current_user.name, user_path(current_user) %></th>
+	  <th><%= @user.name %></th>
 
   <tr>
 	  <th>introduction</th>
@@ -67,19 +63,18 @@
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
   		<table class='table'>
-  		  <tr>
-          <td>
-            <%= link_to image_tag("/") %><br>
-            </td>
+  		  <tbody>
+  		    <tr>
+  		      <td><%= image_tag @user.get_profile_image %></td>
+  		      <td><%= @book.title %></td>
+  		      <td><%= @book.body %></td>
+  		    </tr>
 
-          <td><%= link_to "createした文字を表示する" %></td>
-           <td>
-
-
-           </td>
+  		  </tbody>
 
 
-            <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+
+            <td><%= link_to @book.user.name, user_path %></td>
 
 　　　　　　<% if @book.user == current_user %>
             <td><%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-sm btn-danger" %></td></td>

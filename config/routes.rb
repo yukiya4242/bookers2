@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  patch 'users/:id'=>'users#create'
+  
+  
   patch 'books/:id'=>'books#create'
   post 'users'=>'users#create'
   get 'users/:id', to: 'users#show'
