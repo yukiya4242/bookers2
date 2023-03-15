@@ -1,4 +1,9 @@
 class BooksController < ApplicationController
+before_action :authenticate_user!, except: [:top]
+before_action :configure_permitted_parameters, if: :devise_controller?
+
+
+
   def new
     @book = Book.new
   end
@@ -21,11 +26,12 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to @book
     else
-      'edit'
+      render 'edit'
     end
   end
 
   def edit
+    @book = Book.find(params[:id])
   end
 
 
@@ -52,7 +58,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-   params.require(:book).permit(:title, :opinion, :profile_image)
+   params.require(:book).permit(:title, :body, :profile_image)
   end
 end
 
