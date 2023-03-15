@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:top]
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+
+
+
  def show
   @user = User.find(params[:id])
   @books = @user.books
@@ -18,6 +24,7 @@ class UsersController < ApplicationController
    @users = User.all
    @user = User.new
    @book = current_user
+
   end
 
  #ユーザー情報の取得
@@ -27,9 +34,9 @@ class UsersController < ApplicationController
   def update
    @user = User.find(params[:id])
    if @user.update(user_params)
-    redirect_to user_path(@user)
+   redirect_to user_path(@user.id)
    else
-    render 'edit'
+   render 'edit'
    end
   end
 
@@ -39,3 +46,13 @@ class UsersController < ApplicationController
   end
 
 end
+
+
+  #def update
+   #@user = User.find(params[:id])
+   #if @user.update(user_params)
+    #redirect_to user_path(@user.id)
+   #else
+    #render 'edit'
+   #end
+  #end

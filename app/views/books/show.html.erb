@@ -81,7 +81,9 @@
 
             <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
 
-            <td><%= link_to "Destroy", book_path(@book), class: "btn btn-sm btn-danger" %></td></td>
+　　　　　　<% if @book.user == current_user %>
+            <td><%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-sm btn-danger" %></td></td>
+            <% end %>
         </tr>
       </table>
     </div>
