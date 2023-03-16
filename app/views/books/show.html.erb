@@ -4,7 +4,7 @@
 <head>
 <title>Bookers2Ver2</title>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="P7-iNoYlrfDeK_XYKHbNfJrMbi9tfPNw7iSZZMqDC_e4cuz7kr2dNltWI8QTEVoreBIQQpGs8ZSfJ4cwODJ8rg" />
+<meta name="csrf-token" content="umVhkMFkMg2IBBoipP7MSM7bf20PPZ8Pj3YeV1CXAz9HGpdBfJgLKG4OyBr9nJZXxCvaM_TmrdatRe4eWWx1XA" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" media="all" href="/packs/css/application-859f38f5.css" data-turbolinks-track="reload" />
@@ -13,19 +13,30 @@
 <body>
 
 <main>
-
-<div class='container'>
+<p>
+<%= flash[:notice] %>
+</p>
 <div class='row'>
 <div class='col-md-3'>
 <h2>User info</h2>
-<%= image_tag @user.get_profile_image %>
 <table class='table'>
+<%= image_tag @user.get_profile_image %>
+
+<th>name</th>
+<td><%= current_user.name %></td>
+<tr>
+<th>introduction</th>
+<th><%= current_user.introduction %></th>
+</tr>
+</table>
 
 <div class='row'>
 <%= link_to edit_user_path, class: "btn btn-outline-secondary btn-block" do %>
 <i class="fas fa-user-cog"></i>
 <% end %>
 </div>
+
+
 
 <h2 class="mt-3">New book</h2>
 <%= form_with(url: '/books', method: 'post') do |f| %>
@@ -42,46 +53,41 @@
 </div>
 <% end %>
 
+
+
 <%= form_with(model: @book, local: true) do |f| %>
 <div class="form-group">
 <%= f.submit "Create Book", class: "btn btn-success", "data-disable-with" => "Create Book" %>
 </div>
 <% end %>
 </div>
-</form>
+
+
 
 
 <div class='col-md-8 offset-md-1'>
 <h2>Book detail</h2>
 <table class='table'>
-
-
-
 <tr>
-<th>name</th>
-<td><%= current_user.name %></td>
-</tr>
-<tr>
-<th>introduction</th>
-<th><%= current_user.introduction %></th>
-</tr>
 
-
-
-<td><%= link_to @book.user.name, user_path %></td>
-</table>
-
-
-
-<% if @book.user == current_user %>
-<td><%= link_to "Destroy", book_path(@book), method: :delete, class: "btn btn-sm btn-danger" %></td>
+<td>
+<%= link_to user_path do %>
+<%= image_tag @user.profile_image, size: "150x150" %>
+<br>
+<%= current_user.name %>
 <% end %>
+</td>
+
+<td>a</td>
+<td>a</td>
+
 </tr>
 </table>
 </div>
 </div>
 </div>
 </main>
+
 
 </body>
 </html>

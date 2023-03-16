@@ -24,6 +24,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
+      flash[:success] = "Book was successfully updated."
       redirect_to @book
     else
       render 'edit'
@@ -32,6 +33,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 
   def edit
     @book = Book.find(params[:id])
+    redirect_to book_path
   end
 
 
@@ -42,6 +44,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
+      flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book)
     else
       redirect_to books_path

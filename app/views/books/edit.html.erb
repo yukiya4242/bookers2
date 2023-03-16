@@ -21,23 +21,23 @@
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   	    <h1>Editing Book</h1>
 
-  		<%= form_with model: @book, url: books_path, method: :patch, authenticity_token: true do |form| %>
+  		<%= form_for @book, method: :patch do |f| %>
       <div class="form-group">
-      <%= form.label :title, "Title" %>
-      <%= form.text_field :title, class: "form-control book_title", id: "book_title" %>
+      <%= f.label :title, "Title" %>
+      <%= f.text_field :title, class: "form-control book_title", id: "book_title" %>
       </div>
 
 
 
       <div class="form-group">
-      <%= form.label :opinion, "Opinion" %>
-      <%= form.text_area :opinion, class: "form-control book_body", id: "book_opinion" %>
+      <%= f.label :opinion, "Opinion" %>
+      <%= f.text_area :opinion, class: "form-control book_body", id: "book_opinion" %>
       </div>
 
 
 
      <div class="form-group">
-     <%= form.submit "Update Book", class: "btn btn-success", "data-disable-with": "Update Book" %>
+     <%= f.submit "Update Book", class: "btn btn-success", "data-disable-with": "Update Book" %>
       </div>
       <% end %>
 
