@@ -27,21 +27,7 @@
 <%= render partial: "user_info", locals: { user: current_user } %>
 
 
-<table class='table'>
-<th>name</th>
-<th><%= current_user.name %></th>
-</tr>
-<tr>
-<th>introduction</th>
-<th><%= current_user.introduction %></th>
-</tr>
-</table>
 
-
-<div class='row'>
-<%= link_to edit_user_path(1), class: 'btn btn-outline-secondary btn-block edit_user' do %>
-<% end %>
-</div>
 
 
 <!--部分テンプレート-->

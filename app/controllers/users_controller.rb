@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   @user = User.find(params[:id])
   @books = @user.books
   @book = Book.new
+  @book = Book.find(params[:book_id]) if params[:book_id]
+  @users = User.all
  end
 
   def edit
@@ -20,19 +22,30 @@ class UsersController < ApplicationController
 
   end
 
-  def create
-   @user = User.new(user_params)
-   @user.user_id = current_user.id
-   if @user.save
-    log_in @user
-    flash[:notice] = "Welcome! You have signed up successfully."
-    redirect_to book_path(@book.id), notice: 'Profile updated successfully'
-   else
-    flash.now[:error] = "Error: failed to sign up."
-    render 'edit'
-   end
 
-  end
+
+
+
+
+
+
+
+
+
+
+def create
+@user = User.new(user_params)
+@user.user_id = current_user.id
+if @user.save
+log_in @user
+flash[:notice] = "Welcome! You have signed up successfully."
+redirect_to book_path(@book.id), notice: 'Profile updated successfully'
+else
+flash.now[:error] = "Error: failed to sign up."
+render 'edit'
+end
+
+end
 
   def index
    @users = User.all
