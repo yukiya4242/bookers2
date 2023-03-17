@@ -35,7 +35,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 
   def edit
     @book = Book.find(params[:id])
-    redirect_to book_path
+    redirect_to book_path(@book)
   end
 
 
@@ -49,7 +49,10 @@ before_action :configure_permitted_parameters, if: :devise_controller?
       flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book)
     else
-      redirect_to books_path
+      flash.now[:error] = "Error: failed to create book."
+      @books = Book.all
+      @user = current_user
+      render 'index'
     end
   end
 
@@ -57,13 +60,13 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to '/books'
+    redirect_to books_path
   end
 
 
   private
   def book_params
-   params.require(:book).permit(:title, :body, :profile_image)
+   params.require(:book).permit(:title, :body, :profile_image,)
   end
 
     def ensure_correct_user

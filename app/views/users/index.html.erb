@@ -23,7 +23,7 @@
 <div class='row'>
 <div class='col-md-3'>
 
-<!--部分テンプレート使いたい-->
+<!--部分テンプレートできた！！！-->
 <%= render partial: "user_info", locals: { user: current_user } %>
 
 
@@ -66,7 +66,7 @@
 <td><%= image_tag user.get_profile_image %></td>
 
 <td><%= user.name %></td>
-<td><%= link_to "Show", users_path %></td>
+<td><%= link_to "Show", user_path(user) %></td>
 </tr>
 <% end %>
 </tbody>
