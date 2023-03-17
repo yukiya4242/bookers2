@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def edit
    @user = User.find(params[:id])
    if @user != current_user
-    redirect_to root_path
+    redirect_to edit_user_path
    end
 
   end
@@ -24,9 +24,11 @@ class UsersController < ApplicationController
    @user = User.new(user_params)
    @user.user_id = current_user.id
    if @user.save
+    log_in @user
     flash[:notice] = "Welcome! You have signed up successfully."
-    redirect_to book_path, notice: 'Profile updated successfully'
+    redirect_to book_path(@book.id), notice: 'Profile updated successfully'
    else
+    flash.now[:error] = "Error: failed to sign up."
     render 'edit'
    end
 
@@ -49,13 +51,14 @@ class UsersController < ApplicationController
    redirect_to user_path(@user.id)
    flash[:success] = "You have updated user successfully."
    else
+   flash.now[:error] = "Error: failed to update user."
    render :edit
    end
   end
 
   private
   def user_params
-   params.require(:user).permit(:title, :body, :profile_image)
+   params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
 end

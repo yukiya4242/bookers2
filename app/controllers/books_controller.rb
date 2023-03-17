@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
 before_action :authenticate_user!, except: [:top]
+before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 before_action :configure_permitted_parameters, if: :devise_controller?
 
 
@@ -27,6 +28,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
       flash[:success] = "Book was successfully updated."
       redirect_to @book
     else
+      flash.now[:error] = "Error: failed to create book."
       render 'edit'
     end
   end
@@ -63,6 +65,13 @@ before_action :configure_permitted_parameters, if: :devise_controller?
   def book_params
    params.require(:book).permit(:title, :body, :profile_image)
   end
+
+    def ensure_correct_user
+    @book = Book.find(params[:id])
+    if @book.user != current_user
+      redirect_to books_path
+    end
+    end
 end
 
 =begin
