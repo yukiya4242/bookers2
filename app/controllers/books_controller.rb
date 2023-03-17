@@ -9,16 +9,21 @@ def new
 @book = Book.new
 end
 
+
 def index
 @books = Book.all
 @book = Book.new
 @user = current_user
 end
 
+
+
 def show
-@book = Book.find(params[:id])
-@books = @user.books.order(created_at: :desc)
-@user = @book.user
+  @book = Book.find(params[:id])
+  @book = Book.find(params[:book_id]) if params[:book_id]
+  @user = @book.user
+  @books = @user.books.order(created_at: :desc)
+
 
 end
 
