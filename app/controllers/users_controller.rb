@@ -23,16 +23,6 @@ class UsersController < ApplicationController
   end
 
 
-
-
-
-
-
-
-
-
-
-
 def create
 @user = User.new(user_params)
 @user.user_id = current_user.id
@@ -42,13 +32,13 @@ flash[:notice] = "Welcome! You have signed up successfully."
 redirect_to book_path(@book.id), notice: 'Profile updated successfully'
 else
 flash.now[:error] = "Error: failed to sign up."
-render 'edit'
+render 'new'
 end
 
 end
 
   def index
-   @users = User.all
+   @users = User.all.order(created_at: "DESC")
    @user = User.new
    @book = current_user
 

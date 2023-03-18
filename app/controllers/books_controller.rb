@@ -11,7 +11,7 @@ end
 
 
 def index
-@books = Book.all
+@books = Book.all.order(created_at: "DESC")
 @book = Book.new
 @user = current_user
 end
@@ -23,6 +23,7 @@ def show
   @book = Book.find(params[:book_id]) if params[:book_id]
   @user = @book.user
   @books = @user.books.order(created_at: :desc)
+  @book_new = Book.new
 
 
 end

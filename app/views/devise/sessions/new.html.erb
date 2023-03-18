@@ -4,9 +4,11 @@
 
 
 <h2>Log in</h2>
- <%#= form_with scope: :user, url: user_session_path, method: :post do |f| %>
 <%= form_with model: @user, url: user_session_path do |f| %>
+
 <div class="field">
+
+
 <%= label_tag 'user_name', 'Name' %><br />
 <%= text_field_tag 'user[name]', nil, class: 'name', autofocus: true, id: 'user_name' %>
 </div>
@@ -16,8 +18,11 @@
 
 
 
+
+
 <div class="field">
 <%= f.label :password %><br />
+<%#= f.password_field :password, autocomplete: "off", class: "password", id: "user_path" %>
 <%= f.password_field :password, autocomplete: "current-password" %>
 </div>
 
