@@ -4,7 +4,7 @@
 
 
 <h2>Log in</h2>
-
+ <%#= form_with scope: :user, url: user_session_path, method: :post do |f| %>
 <%= form_with model: @user, url: user_session_path do |f| %>
 <div class="field">
 <%= label_tag 'user_name', 'Name' %><br />

@@ -38,9 +38,11 @@ render 'edit'
 end
 end
 
+
+#"books/:id/show"にいけない
 def edit
 @book = Book.find(params[:id])
-redirect_to book_path(@book)
+#redirect_to book_path(@book)
 end
 
 

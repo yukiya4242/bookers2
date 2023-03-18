@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
 
 
+
   post 'users'=>'users#create'
   get 'users/:id', to: 'users#show'
   get 'homes/about', to: 'homes#about', as: 'about'
