@@ -30,8 +30,8 @@
 </div>
 <% end %>
 
-<!--<p><%#= flash[:success] %></p>-->
-<!--<p><%#= flash[:notice] %></p>-->
+<p><%= flash[:success] %></p>
+<p><%= flash[:notice] %></p>
 
 
 
@@ -60,8 +60,8 @@
 <% @books.each do |book| %>
 <tr>
 <td><%= image_tag @user.get_profile_image %></td>
-<td><%= link_to book.title, book_path(@books.ids) %></td>
-<td><%= book.opinion %></td>
+<td><%= link_to book.title, book_path(book) %></td>
+<td><%= book.body %></td>
 </tr>
 <% end %>
 </tbody>

@@ -20,7 +20,7 @@ end
 
 def show
   @book = Book.find(params[:id])
-  @book = Book.find(params[:book_id]) if params[:book_id]
+
   @user = @book.user
   @books = @user.books.order(created_at: :desc)
   @book_new = Book.new
@@ -77,7 +77,7 @@ end
 
 private
 def book_params
-params.require(:book).permit(:title, :profile_image, :opinion)
+params.require(:book).permit(:title, :body)
 end
 
 def ensure_correct_user

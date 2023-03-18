@@ -40,7 +40,7 @@ end
   def index
    @users = User.all.order(created_at: "DESC")
    @user = User.new
-   @book = current_user
+   @book = Book.new
 
   end
 

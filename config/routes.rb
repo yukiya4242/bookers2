@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   post 'users'=>'users#create'
   get 'users/:id', to: 'users#show'
-  get 'homes/about', to: 'homes#about', as: 'about'
+  get 'home/about', to: 'home#about', as: 'about'
+  get 'homes/about', to: 'homes#about'
   root to: 'homes#top'
   resources :books, only:[:new, :create, :destroy, :index, :show, :edit, :update]
   resources :users, only:[:show, :edit, :index, :update]
